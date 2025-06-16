@@ -19,7 +19,8 @@ const AddCourse = () => {
     
 
     // current time
-    const createdAt = format(new Date(), "hh:mm:ss aaa");
+    // const createdAt = format(new Date(), "hh:mm:ss aaa");
+    const createdAt = new Date();
 
     const courseInfo = {
         name,

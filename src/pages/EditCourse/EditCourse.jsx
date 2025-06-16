@@ -1,34 +1,25 @@
 import axios from "axios";
-import { format } from "date-fns";
 import React from "react";
-import { useLoaderData } from "react-router";
 import { Bounce, toast } from "react-toastify";
 import useAuth from "../../Hook/useAuth";
+import { useLoaderData } from "react-router";
 
 const EditCourse = () => {
   const { user } = useAuth();
+  const course = useLoaderData();
+  console.log(course);
+
+  // Destructure all previous course data
   const {
     _id,
+    title: oldTitle,
+    description: oldDescription,
+    image: oldImage,
     duration: oldDuration,
-    title,
-    description,
-    image,
-  } = useLoaderData();
-  const Duration = oldDuration.split(":");
-  const oldHours = Duration[0];
-  const oldMinutes = Duration[1];
-  const oldSeconds = Duration[2];
+  } = course;
 
-  //   {
-  //     "_id": "684eda209058c4275142d8e1",
-  //     "name": "parvez hossain",
-  //     "email": "parvezhossain744471@gmail.com",
-  //     "duration": "2:12:20",
-  //     "title": "Graphics Design",
-  //     "description": "Graphic design is the art and practice of planning and projecting ideas and experiences with visual and textual content. It's a creative discipline that combines art and technology to communicate messages, inform, inspire, and captivate audiences. Graphic designers use visual elements like typography, images, colors, and layout techniques to create effective communication. ",
-  //     "image": "https://i.ibb.co.com/CKNpNLQ6/graphics-design.jpg",
-  //     "createdAt": "08:35:12 pm"
-  // }
+  const durationParts = oldDuration?.split(":") || ["0", "0", "0"];
+  const [oldHours, oldMinutes, oldSeconds] = durationParts;
 
   const handleCourse = (e) => {
     e.preventDefault();
@@ -42,7 +33,8 @@ const EditCourse = () => {
     const name = user?.displayName;
 
     // current time
-    const createdAt = format(new Date(), "hh:mm:ss aaa");
+    // const createdAt = format(new Date(), "hh:mm:ss aaa");
+    const createdAt = new Date();
 
     const courseInfo = {
       name,
@@ -54,9 +46,9 @@ const EditCourse = () => {
 
     // check if changes were made?
     const hasChanged =
-      title !== data.title ||
-      description !== data.description ||
-      image !== data.image ||
+      oldTitle !== data.title ||
+      oldDescription !== data.description ||
+      oldImage !== data.image ||
       oldDuration !== duration;
 
     if (!hasChanged) {
@@ -72,7 +64,7 @@ const EditCourse = () => {
       });
       return;
     }
-    
+
     // update info
     axios
       .put(`http://localhost:3000/courses/${_id}`, courseInfo)
@@ -118,7 +110,7 @@ const EditCourse = () => {
               required
               type="text"
               name="title"
-              defaultValue={title}
+              defaultValue={oldTitle}
               className="input w-full"
               placeholder="Course Title"
             />
@@ -127,7 +119,7 @@ const EditCourse = () => {
               required
               rows="5"
               name="description"
-              defaultValue={description}
+              defaultValue={oldDescription}
               className="textarea w-full"
               placeholder="Short Description"
             ></textarea>
@@ -136,7 +128,7 @@ const EditCourse = () => {
               required
               type="url"
               name="image"
-              defaultValue={image}
+              defaultValue={oldImage}
               className="input w-full"
               placeholder="image url"
             />
