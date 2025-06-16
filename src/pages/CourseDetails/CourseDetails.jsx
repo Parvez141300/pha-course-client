@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaPen } from "react-icons/fa";
 import { GiDuration } from "react-icons/gi";
 import { MdOutlineEmail, MdOutlinePublishedWithChanges } from "react-icons/md";
@@ -12,50 +12,54 @@ import { Helmet } from "react-helmet-async";
 
 const CourseDetails = () => {
   const { user } = useAuth();
-  const [toggle, setToggle] = useState(false);
   const { _id, name, email, duration, title, description, image, createdAt } =
     useLoaderData();
 
-  const handleEnroll = (enrolledCourseId) => {
-    setToggle(true);
-    console.log(enrolledCourseId);
-    const enrollInfo = {
-      enrolledCourseId,
-      enrolledEmail: user?.email,
-    };
+  const [isEnrolled, setIsEnrolled] = useState(false);
+  const [isLimitExceeded, setIsLimitExceeded] = useState(false);
 
+  useEffect(() => {
     axios
-      .post(`http://localhost:3000/enrolled-courses`, enrollInfo)
+      .get(`http://localhost:3000/enrolled-courses?email=${user?.email}`)
       .then((res) => {
-        console.log(res.data);
-        if (res.data.insertedId) {
-          toast.success("Successfully Course Enrolled", {
-            position: "top-right",
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
-          });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(`${error?.message}`, {
-          position: "top-right",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+        const enrolledCourses = res.data;
+        const alreadyEnrolled = enrolledCourses.find(
+          (course) => course?.enrolledCourseId == _id
+        );
+        setIsEnrolled(alreadyEnrolled);
+        setIsLimitExceeded(enrolledCourses.length >= 3);
       });
+  }, [user, _id]);
+
+  const handleEnroll = async () => {
+    if (!user) {
+      return;
+    }
+    if (isEnrolled) {
+      // unenroll
+      try {
+        await axios.delete(`http://localhost:3000/enrolled-courses`, {
+          data: { enrolledEmail: user.email, enrolledCourseId: _id },
+        });
+        toast.success("Enrollment Cancelled");
+        setIsEnrolled(false);
+        setIsLimitExceeded(false);
+      } catch (error) {
+        toast.error(`${error.message}`);
+      }
+    } else {
+      try {
+        const enrollInfo = {
+          enrolledEmail: user.email,
+          enrolledCourseId: _id,
+        };
+        await axios.post(`http://localhost:3000/enrolled-courses`, enrollInfo);
+        toast.success("Enrollment Succeeded");
+        setIsEnrolled(true);
+      } catch (error) {
+        toast.error(`${error.message}`);
+      }
+    }
   };
 
   return (
@@ -76,7 +80,8 @@ const CourseDetails = () => {
               <MdOutlinePublishedWithChanges /> Posted By: {name}
             </p>
             <p className="flex items-center gap-2">
-              <FaPen /> Created At: {format(new Date(createdAt), "hh:mm:ss aaa")}
+              <FaPen /> Created At:{" "}
+              {format(new Date(createdAt), "hh:mm:ss aaa")}
             </p>
           </div>
           <p className="flex items-center gap-2">
@@ -90,14 +95,15 @@ const CourseDetails = () => {
           <div>
             {user ? (
               <button
-                onClick={() => handleEnroll(_id)}
-                className={`btn  hover:bg-[#023A62] ${
-                  toggle
+                onClick={handleEnroll}
+                disabled={!isEnrolled && isLimitExceeded}
+                className={`btn ${
+                  isEnrolled
                     ? "bg-[#023A62] btn-primary"
                     : "btn-outline btn-primary"
                 }`}
               >
-                {toggle ? "Enrolled" : "Enroll"}
+                {isEnrolled ? "Enrolled" : "Enroll"}
               </button>
             ) : (
               <button
@@ -119,6 +125,11 @@ const CourseDetails = () => {
                   If you don't login you can't enroll the course
                 </p>
               </div>
+            </div>
+          )}
+          {isLimitExceeded && (
+            <div className="text-red-600 font-semibold">
+              You can't enroll in more than 3 courses.
             </div>
           )}
           <div>

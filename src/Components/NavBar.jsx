@@ -164,6 +164,11 @@ const NavBar = () => {
           {dropDownOpen && (
             <ul className="absolute right-0 mt-24 w-48 rounded-md bg-white shadow-lg z-10">
               <li
+                className="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                <Link to={"/user-profile"}>Profile</Link>
+              </li>
+              <li
                 onClick={handleUserLogout}
                 className="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >

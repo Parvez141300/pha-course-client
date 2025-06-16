@@ -1,10 +1,48 @@
-import { format } from "date-fns";
-import React, { use } from "react";
+import axios from "axios";
+import React, { use, useState } from "react";
 import { CiCircleRemove } from "react-icons/ci";
+import { toast } from "react-toastify";
+import useAuth from "../../../Hook/useAuth";
 
 const EnrolledCourseList = ({ userEnrolledCoursePromiseApi }) => {
-  const enrolledCourses = use(userEnrolledCoursePromiseApi);
+  const { user } = useAuth();
+
+  const initialEnrolledCourses = use(userEnrolledCoursePromiseApi);
+  const [enrolledCourses, setEnrolledCourses] = useState(
+    initialEnrolledCourses
+  );
   console.log(enrolledCourses);
+
+  const handleRemoveEnrollment = async (enrolledCourseId) => {
+    console.log(enrolledCourseId, user.email);
+    try {
+      await axios.delete(`http://localhost:3000/enrolled-courses`, {
+        data: {
+          enrolledEmail: user?.email,
+          enrolledCourseId: enrolledCourseId,
+        },
+      });
+      toast.success("Enrollment Cancelled");
+      const remainingEnrolledCourses = enrolledCourses.filter(
+        (course) => course.enrolledCourseId !== enrolledCourseId
+      );
+      setEnrolledCourses(remainingEnrolledCourses);
+    } catch (error) {
+      toast.error(`${error.message}`);
+    }
+  };
+
+  //   {
+  //     "_id": "685070a43dfb51b7f905ae2e",
+  //     "enrolledEmail": "parvezhossain744471@gmail.com",
+  //     "enrolledCourseId": "684fc5105ba09cbe5e04c9cf",
+  //     "image": "https://happenings.lpu.in/wp-content/uploads/2020/09/Word.png",
+  //     "title": "MS word",
+  //     "createdAt": "2025-06-16T07:24:29.822Z",
+  //     "duration": "02:50:20",
+  //     "description": "Microsoft Word, often shortened to MS Word, is a word processing software developed by Microsoft. It allows users to create, edit, and format various documents like letters, reports, resumes, and more."
+  // }
+
   return (
     <div className="space-y-5">
       <h2 className="text-3xl font-bold">
@@ -18,7 +56,7 @@ const EnrolledCourseList = ({ userEnrolledCoursePromiseApi }) => {
               <th>No.</th>
               <th>Course Name</th>
               <th>Duration</th>
-              <th>Course Creation</th>
+              <th>Description</th>
               <th>Remove Enrollment</th>
             </tr>
           </thead>
@@ -31,25 +69,28 @@ const EnrolledCourseList = ({ userEnrolledCoursePromiseApi }) => {
                     <div className="avatar">
                       <div className="mask mask-squircle h-12 w-12">
                         <img
-                          src={enrolledCourse.image}
+                          src={enrolledCourse?.image}
                           alt="Avatar Tailwind CSS Component"
                         />
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold">{enrolledCourse.title}</div>
+                      <div className="font-bold">{enrolledCourse?.title}</div>
                       <div className="text-sm opacity-50">
-                        {enrolledCourse.enrolledEmail}
+                        {enrolledCourse?.enrolledEmail}
                       </div>
                     </div>
                   </div>
                 </td>
-                <td>{enrolledCourse.duration}h</td>
-                <td>
-                  {format(new Date(enrolledCourse.createdAt), "hh:mm:ss aaa")}
-                </td>
+                <td>{enrolledCourse?.duration}h</td>
+                <td>{enrolledCourse?.description}</td>
                 <th>
-                  <button className="btn btn-ghost flex items-center gap-1">
+                  <button
+                    onClick={() =>
+                      handleRemoveEnrollment(enrolledCourse?.enrolledCourseId)
+                    }
+                    className="btn btn-ghost flex items-center gap-1"
+                  >
                     <CiCircleRemove size={20} /> Remove
                   </button>
                 </th>
