@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Link, useLocation } from "react-router";
 
@@ -7,6 +8,9 @@ const ErrorPage = () => {
 //   console.log(location.pathname);
   return (
     <div className="bg-[#09A3D1] w-full min-h-screen">
+      <Helmet>
+        <title>PHA Course | Error</title>
+      </Helmet>
       <div className="flex flex-col justify-center items-center min-h-screen space-y-5">
         <div className="text-3xl md:text-4xl lg:text-5xl text-center text-white font-bold">
           400

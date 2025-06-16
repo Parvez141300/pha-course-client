@@ -8,6 +8,7 @@ import { Bounce, toast } from "react-toastify";
 import { TiDeleteOutline } from "react-icons/ti";
 import axios from "axios";
 import { format } from "date-fns";
+import { Helmet } from "react-helmet-async";
 
 const CourseDetails = () => {
   const { user } = useAuth();
@@ -59,6 +60,9 @@ const CourseDetails = () => {
 
   return (
     <div className="bg-[#08A4D1]/20">
+      <Helmet>
+        <title>PHA Course | Course Details</title>
+      </Helmet>
       <div className="w-11/12 mx-auto py-8">
         <div className="space-y-2">
           <div>

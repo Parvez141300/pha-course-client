@@ -2,6 +2,7 @@ import React from "react";
 import useAuth from "../../Hook/useAuth";
 import axios from "axios";
 import { Bounce, toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const AddCourse = () => {
   const { user } = useAuth();
@@ -67,6 +68,9 @@ const AddCourse = () => {
 
   return (
     <div className="w-11/12 mx-auto my-8 flex justify-center items-center">
+      <Helmet>
+        <title>PHA Course | Add Course</title>
+      </Helmet>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body">
           <h1 className="text-3xl md:text-4xl font-bold">Add Course</h1>

@@ -7,6 +7,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import logo from "../../assets/logo/pha course logo.png";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const location = useLocation();
@@ -152,6 +153,9 @@ const Login = () => {
 
   return (
     <div className="hero bg-[#09A3D1]/30 min-h-screen w-11/12 mx-auto">
+      <Helmet>
+        <title>PHA Course | Login</title>
+      </Helmet>
       <div className="flex flex-col lg:flex-row-reverse">
         <div className="bg-base-100 w-full lg:max-w-sm rounded-tl-2xl rounded-br-2xl">
           <div className="p-10">

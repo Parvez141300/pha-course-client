@@ -13,6 +13,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Bounce, toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthContext";
 import logo from "../../assets/logo/pha course logo.png";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const {
@@ -216,6 +217,9 @@ const Register = () => {
 
   return (
     <div className="hero bg-[#09A3D1]/30 min-h-screen w-11/12 mx-auto py-10">
+      <Helmet>
+        <title>PHA Course | Register</title>
+      </Helmet>
       <div className="flex flex-col lg:flex-row-reverse">
         <div className="bg-base-100 w-full lg:max-w-sm rounded-tl-2xl rounded-br-2xl">
           <div className="p-5">

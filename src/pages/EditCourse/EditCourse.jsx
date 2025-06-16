@@ -3,6 +3,7 @@ import React from "react";
 import { Bounce, toast } from "react-toastify";
 import useAuth from "../../Hook/useAuth";
 import { useLoaderData } from "react-router";
+import { Helmet } from "react-helmet-async";
 
 const EditCourse = () => {
   const { user } = useAuth();
@@ -101,6 +102,9 @@ const EditCourse = () => {
   };
   return (
     <div className="w-11/12 mx-auto my-8 flex justify-center items-center">
+      <Helmet>
+        <title>PHA Course | Edit Course</title>
+      </Helmet>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body">
           <h1 className="text-3xl md:text-4xl font-bold">Edit Course</h1>
