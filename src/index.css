@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+  themes: light --default;
+ }
+
+ .nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: #023C64;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.nav-link.active {
+  color: #09A3D1;
+  font-weight: bold;
+}
+
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.slider-container {
+  overflow: hidden;
+}
