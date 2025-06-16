@@ -3,7 +3,7 @@ import CourseCard from "./CourseCard";
 
 const Courses = ({ coursePromise }) => {
   const courses = use(coursePromise);
-//   console.log(courses);
+  console.log(courses);
   return (
     <div className="space-y-5">
       <h2 className="text-3xl font-bold">Courses: ({courses.length})</h2>

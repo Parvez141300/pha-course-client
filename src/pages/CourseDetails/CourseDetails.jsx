@@ -6,12 +6,56 @@ import { useLoaderData } from "react-router";
 import useAuth from "../../Hook/useAuth";
 import { Bounce, toast } from "react-toastify";
 import { TiDeleteOutline } from "react-icons/ti";
+import axios from "axios";
+import { format } from "date-fns";
 
 const CourseDetails = () => {
   const { user } = useAuth();
   const [toggle, setToggle] = useState(false);
   const { _id, name, email, duration, title, description, image, createdAt } =
     useLoaderData();
+
+  const handleEnroll = (enrolledCourseId) => {
+    setToggle(true);
+    console.log(enrolledCourseId);
+    const enrollInfo = {
+      enrolledCourseId,
+      enrolledEmail: user?.email,
+    };
+
+    axios
+      .post(`http://localhost:3000/enrolled-courses`, enrollInfo)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          toast.success("Successfully Course Enrolled", {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(`${error?.message}`, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      });
+  };
 
   return (
     <div className="bg-[#08A4D1]/20">
@@ -28,7 +72,7 @@ const CourseDetails = () => {
               <MdOutlinePublishedWithChanges /> Posted By: {name}
             </p>
             <p className="flex items-center gap-2">
-              <FaPen /> Created At: {createdAt}
+              <FaPen /> Created At: {format(new Date(createdAt), "hh:mm:ss aaa")}
             </p>
           </div>
           <p className="flex items-center gap-2">
@@ -42,7 +86,7 @@ const CourseDetails = () => {
           <div>
             {user ? (
               <button
-                onClick={() => setToggle(true)}
+                onClick={() => handleEnroll(_id)}
                 className={`btn  hover:bg-[#023A62] ${
                   toggle
                     ? "bg-[#023A62] btn-primary"

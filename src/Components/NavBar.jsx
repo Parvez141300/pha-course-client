@@ -65,6 +65,16 @@ const NavBar = () => {
               Manage Courses
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to={"/my-enrolled-course"}
+              className={({ isActive }) =>
+                `dark:text-black nav-link ${isActive ? "active" : ""}`
+              }
+            >
+              My Enrolled Courses
+            </NavLink>
+          </li>
         </>
       )}
     </>

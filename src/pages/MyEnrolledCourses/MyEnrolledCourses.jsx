@@ -1,23 +1,24 @@
 import React, { Suspense } from "react";
-import CourseList from "./shared/CourseList";
-import { userCoursePromiseApi } from "../../api/courseApi";
 import useAuth from "../../Hook/useAuth";
+import { userEnrolledCoursePromiseApi } from "../../api/enrolledCourseApi";
+import EnrolledCourseList from "./shared/EnrolledCourseList";
 import LoadingState from "../../LoadingState/LoadingState";
 
-const ManageCourses = () => {
+const MyEnrolledCourses = () => {
   const { user } = useAuth();
-
   return (
     <div className="bg-[#08A4D1]/20 min-h-screen">
       <div className="w-11/12 mx-auto py-8">
         <Suspense fallback={<LoadingState></LoadingState>}>
-          <CourseList
-            userCoursePromiseApi={userCoursePromiseApi(user?.email)}
-          ></CourseList>
+          <EnrolledCourseList
+            userEnrolledCoursePromiseApi={userEnrolledCoursePromiseApi(
+              user?.email
+            )}
+          ></EnrolledCourseList>
         </Suspense>
       </div>
     </div>
   );
 };
 
-export default ManageCourses;
+export default MyEnrolledCourses;

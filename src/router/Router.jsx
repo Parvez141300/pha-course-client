@@ -11,6 +11,7 @@ import LoadingState from "../LoadingState/LoadingState";
 import CourseDetails from "../pages/CourseDetails/CourseDetails";
 import EditCourse from "../pages/EditCourse/EditCourse";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import MyEnrolledCourses from "../pages/MyEnrolledCourses/MyEnrolledCourses";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
             <EditCourse></EditCourse>
           </PrivateRoute>
         ),
+      },
+      {
+        path: '/my-enrolled-course',
+        element: <PrivateRoute><MyEnrolledCourses></MyEnrolledCourses></PrivateRoute>
       },
       {
         path: "/login",
