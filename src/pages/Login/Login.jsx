@@ -4,11 +4,13 @@ import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import { MdOutlineEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import logo from "../../assets/logo/pha course logo.png";
 
 const Login = () => {
+  const location = useLocation();
+
   const { userSignInWithGoogle, userSignIn, userUpdateProfile } =
     useContext(AuthContext);
   const [show, setShow] = useState(false);
@@ -25,9 +27,9 @@ const Login = () => {
     userSignIn(email, password)
       .then((result) => {
         const user = result.user;
-        // console.log(user);
+        console.log(user);
         toast.success("User Successfully logged in");
-        navigate("/");
+        navigate(`${user.email ? location.state : '/'}`);
         form.reset();
       })
       .catch((error) => {
@@ -49,6 +51,8 @@ const Login = () => {
           .then(() => {
             // Profile updated!
             // ...
+            navigate(`${user.email ? location.state : '/'}`);
+            
           })
           .catch((error) => {
             toast.error(error.message);
