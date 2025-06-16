@@ -10,13 +10,18 @@ import { MdOutlineEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { Link, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
-import { toast } from "react-toastify";
+import { Bounce, toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthContext";
 import logo from "../../assets/logo/pha course logo.png";
 
 const Register = () => {
-  const { userSignUp, userUpdateProfile, userSignInWithGoogle } =
-    useContext(AuthContext);
+  const {
+    setUser,
+    userSignUp,
+    userUpdateProfile,
+    userSignInWithGoogle,
+    userSignInWithGithub,
+  } = useContext(AuthContext);
 
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
@@ -99,21 +104,113 @@ const Register = () => {
     userSignInWithGoogle()
       .then((result) => {
         const user = result.user;
-        // console.log(user);
-        userUpdateProfile({ displayName: user?.displayName, photoURL: user?.photoURL })
+        setUser(user);
+        console.log(user);
+        userUpdateProfile({
+          displayName: user?.displayName,
+          photoURL: user?.photoURL,
+        })
           .then(() => {
             // Profile updated!
             // ...
+
+            toast.success("Successfully logged in", {
+              position: "top-right",
+              autoClose: 1000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+            });
+            navigate("/");
           })
           .catch((error) => {
-            toast.error(error.message);
+            toast.error(`${error.message}`, {
+              position: "top-right",
+              autoClose: 1000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+            });
           });
-
-        navigate("/");
-        toast.success("User Successfully Logged in");
       })
       .catch((error) => {
-        toast.error(error.message);
+        toast.error(`${error.message}`, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      });
+  };
+
+
+
+  // login with github
+  const handleGithubLogin = () => {
+    userSignInWithGithub()
+      .then((res) => {
+        const user = res.user;
+
+        userUpdateProfile({
+          displayName: user?.displayName,
+          photoURL: user?.photoURL,
+        })
+          .then(() => {
+            // Profile updated!
+            // ...
+            setUser(user);
+            toast.success("Successfully logged in", {
+              position: "top-right",
+              autoClose: 1000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+            });
+            navigate('/')
+          })
+          .catch((error) => {
+            toast.error(`${error.message}`, {
+              position: "top-right",
+              autoClose: 1000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+            });
+          });
+      })
+      .catch((error) => {
+        toast.error(`${error.message}`, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       });
   };
 
@@ -244,7 +341,10 @@ const Register = () => {
                 Login with Google
               </button>
               {/* GitHub */}
-              <button className="btn w-full bg-black text-white border-black">
+              <button
+                onClick={handleGithubLogin}
+                className="btn w-full bg-black text-white border-black"
+              >
                 <FaGithub size={20}></FaGithub>
                 Login with GitHub
               </button>
