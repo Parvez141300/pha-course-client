@@ -2,18 +2,26 @@ import React, { Suspense } from "react";
 import Banner from "./Shared/Banner";
 import Courses from "./Shared/Courses";
 import LoadingState from "../../LoadingState/LoadingState";
+import { Helmet } from "react-helmet-async";
+import Faq from "./Shared/Faq";
 
 const Home = () => {
-  const coursePromise = fetch("http://localhost:3000/courses?latest=true").then((res) =>
-    res.json()
+  const coursePromise = fetch("http://localhost:3000/courses?latest=true").then(
+    (res) => res.json()
   );
   return (
     <div>
+      <Helmet>
+        <title>PHA Course</title>
+      </Helmet>
       <Banner></Banner>
       <div className="w-11/12 mx-auto my-8">
         <Suspense fallback={<LoadingState></LoadingState>}>
           <Courses coursePromise={coursePromise}></Courses>
         </Suspense>
+      </div>
+      <div className="w-11/12 mx-auto my-8">
+        <Faq></Faq>
       </div>
     </div>
   );
