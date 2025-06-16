@@ -4,6 +4,7 @@ import Courses from "./Shared/Courses";
 import LoadingState from "../../LoadingState/LoadingState";
 import { Helmet } from "react-helmet-async";
 import Faq from "./Shared/Faq";
+import Stats from "./Shared/Stats";
 
 const Home = () => {
   const coursePromise = fetch("http://localhost:3000/courses?latest=true").then(
@@ -19,6 +20,9 @@ const Home = () => {
         <Suspense fallback={<LoadingState></LoadingState>}>
           <Courses coursePromise={coursePromise}></Courses>
         </Suspense>
+      </div>
+      <div className="w-11/12 mx-auto my-8">
+        <Stats></Stats>
       </div>
       <div className="w-11/12 mx-auto my-8">
         <Faq></Faq>
