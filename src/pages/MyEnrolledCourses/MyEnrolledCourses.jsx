@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet-async";
 
 const MyEnrolledCourses = () => {
   const { user } = useAuth();
+  
   return (
     <div className="bg-[#08A4D1]/20 min-h-screen">
       <Helmet>
@@ -16,7 +17,7 @@ const MyEnrolledCourses = () => {
         <Suspense fallback={<LoadingState></LoadingState>}>
           <EnrolledCourseList
             userEnrolledCoursePromiseApi={userEnrolledCoursePromiseApi(
-              user?.email
+              user?.email, user.accessToken
             )}
           ></EnrolledCourseList>
         </Suspense>
