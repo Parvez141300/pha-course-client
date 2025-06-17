@@ -17,6 +17,7 @@ const CourseDetails = () => {
 
   const [isEnrolled, setIsEnrolled] = useState(false);
   const [isLimitExceeded, setIsLimitExceeded] = useState(false);
+  const [enrollmentCount, setEnrollmentCount] = useState(0);
 
   useEffect(() => {
     axios
@@ -38,24 +39,33 @@ const CourseDetails = () => {
     if (isEnrolled) {
       // unenroll
       try {
+        
         await axios.delete(`http://localhost:3000/enrolled-courses`, {
-          data: { enrolledEmail: user.email, enrolledCourseId: _id },
+          data: {
+            enrolledEmail: user.email,
+            enrolledCourseId: _id,
+            enrollmentCount: enrollmentCount - 1,
+          },
         });
         toast.success("Enrollment Cancelled");
         setIsEnrolled(false);
+        setEnrollmentCount(enrollmentCount - 1)
         setIsLimitExceeded(false);
       } catch (error) {
         toast.error(`${error.message}`);
       }
     } else {
       try {
+        
         const enrollInfo = {
           enrolledEmail: user.email,
           enrolledCourseId: _id,
+          enrollmentCount: enrollmentCount + 1,
         };
         await axios.post(`http://localhost:3000/enrolled-courses`, enrollInfo);
         toast.success("Enrollment Succeeded");
         setIsEnrolled(true);
+        setEnrollmentCount(enrollmentCount + 1)
       } catch (error) {
         toast.error(`${error.message}`);
       }

@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const CourseList = ({ userCoursePromiseApi }) => {
   const initialCourses = use(userCoursePromiseApi);
   const [courses, setCourses] = useState(initialCourses);
-
+console.log(courses);
   const handleDeleteCourse = (_id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -57,6 +57,7 @@ const CourseList = ({ userCoursePromiseApi }) => {
               <th>No.</th>
               <th>Title</th>
               <th>Description</th>
+              <th>Enrolled</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -66,6 +67,7 @@ const CourseList = ({ userCoursePromiseApi }) => {
                 <th>{index + 1}</th>
                 <td>{course?.title}</td>
                 <td>{course?.description}</td>
+                <td>{course?.enrollmentCount}</td>
                 <td>
                   <div className="join join-vertical lg:join-horizontal gap-2">
                     <Link

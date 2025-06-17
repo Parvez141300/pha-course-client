@@ -32,16 +32,6 @@ const EnrolledCourseList = ({ userEnrolledCoursePromiseApi }) => {
     }
   };
 
-  //   {
-  //     "_id": "685070a43dfb51b7f905ae2e",
-  //     "enrolledEmail": "parvezhossain744471@gmail.com",
-  //     "enrolledCourseId": "684fc5105ba09cbe5e04c9cf",
-  //     "image": "https://happenings.lpu.in/wp-content/uploads/2020/09/Word.png",
-  //     "title": "MS word",
-  //     "createdAt": "2025-06-16T07:24:29.822Z",
-  //     "duration": "02:50:20",
-  //     "description": "Microsoft Word, often shortened to MS Word, is a word processing software developed by Microsoft. It allows users to create, edit, and format various documents like letters, reports, resumes, and more."
-  // }
 
   return (
     <div className="space-y-5">
