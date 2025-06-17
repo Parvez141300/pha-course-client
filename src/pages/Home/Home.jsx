@@ -8,7 +8,7 @@ import Stats from "./Shared/Stats";
 import PopularCourses from "./Shared/PopularCourses";
 
 const Home = () => {
-  const coursePromise = fetch("http://localhost:3000/courses?latest=true").then(
+  const coursePromise = fetch("https://assignment-11-server-tau-eight.vercel.app/courses?latest=true").then(
     (res) => res.json()
   );
   return (

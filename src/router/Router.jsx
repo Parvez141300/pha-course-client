@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/all-courses",
-        loader: () => fetch("http://localhost:3000/courses"),
+        loader: () => fetch("https://assignment-11-server-tau-eight.vercel.app/courses"),
         hydrateFallbackElement: <LoadingState></LoadingState>,
         element: <AllCourses></AllCourses>,
       },
@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
       {
         path: "/course-details/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/courses/${params.id}`),
+          fetch(`https://assignment-11-server-tau-eight.vercel.app/courses/${params.id}`),
         hydrateFallbackElement: <LoadingState></LoadingState>,
         element: <CourseDetails></CourseDetails>,
       },
@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
       {
         path: "/edit-course/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/courses/${params.id}`),
+          fetch(`https://assignment-11-server-tau-eight.vercel.app/courses/${params.id}`),
         hydrateFallbackElement: <LoadingState></LoadingState>,
         element: (
           <PrivateRoute>

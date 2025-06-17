@@ -11,12 +11,12 @@ const EnrolledCourseList = ({ userEnrolledCoursePromiseApi }) => {
   const [enrolledCourses, setEnrolledCourses] = useState(
     initialEnrolledCourses
   );
-  console.log(enrolledCourses);
+  // console.log(enrolledCourses);
 
   const handleRemoveEnrollment = async (enrolledCourseId) => {
     console.log(enrolledCourseId, user.email);
     try {
-      await axios.delete(`http://localhost:3000/enrolled-courses`, {
+      await axios.delete(`https://assignment-11-server-tau-eight.vercel.app/enrolled-courses`, {
         data: {
           enrolledEmail: user?.email,
           enrolledCourseId: enrolledCourseId,

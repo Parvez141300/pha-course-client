@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const CourseList = ({ userCoursePromiseApi }) => {
   const initialCourses = use(userCoursePromiseApi);
   const [courses, setCourses] = useState(initialCourses);
-console.log(courses);
+  // console.log(courses);
   const handleDeleteCourse = (_id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -20,7 +20,7 @@ console.log(courses);
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/courses/${_id}`)
+          .delete(`https://assignment-11-server-tau-eight.vercel.app/courses/${_id}`)
           .then((res) => {
             console.log(res.data);
 

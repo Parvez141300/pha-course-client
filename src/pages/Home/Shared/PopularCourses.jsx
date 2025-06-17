@@ -5,11 +5,12 @@ import { toast } from "react-toastify";
 
 const PopularCourses = () => {
   const [popularCourse, setPopularCourse] = useState([]);
-  console.log(popularCourse);
+  
+//   console.log(popularCourse);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/enrolled-courses/popular")
+      .get("https://assignment-11-server-tau-eight.vercel.app/enrolled-courses/popular")
       .then((res) => {
         const data = res.data;
         setPopularCourse(data);

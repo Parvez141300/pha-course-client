@@ -68,7 +68,7 @@ const EditCourse = () => {
 
     // update info
     axios
-      .put(`http://localhost:3000/courses/${_id}`, courseInfo)
+      .put(`https://assignment-11-server-tau-eight.vercel.app/courses/${_id}`, courseInfo)
       .then((res) => {
         console.log(res.data);
         if (res?.data?.modifiedCount > 0) {

@@ -21,7 +21,7 @@ const CourseDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/enrolled-courses?email=${user?.email}`)
+      .get(`https://assignment-11-server-tau-eight.vercel.app/enrolled-courses?email=${user?.email}`)
       .then((res) => {
         const enrolledCourses = res.data;
         const alreadyEnrolled = enrolledCourses.find(
@@ -40,7 +40,7 @@ const CourseDetails = () => {
       // unenroll
       try {
         
-        await axios.delete(`http://localhost:3000/enrolled-courses`, {
+        await axios.delete(`https://assignment-11-server-tau-eight.vercel.app/enrolled-courses`, {
           data: {
             enrolledEmail: user.email,
             enrolledCourseId: _id,
@@ -62,7 +62,7 @@ const CourseDetails = () => {
           enrolledCourseId: _id,
           enrollmentCount: enrollmentCount + 1,
         };
-        await axios.post(`http://localhost:3000/enrolled-courses`, enrollInfo);
+        await axios.post(`https://assignment-11-server-tau-eight.vercel.app/enrolled-courses`, enrollInfo);
         toast.success("Enrollment Succeeded");
         setIsEnrolled(true);
         setEnrollmentCount(enrollmentCount + 1)

@@ -1,3 +1,8 @@
-export const userCoursePromiseApi = (email) => {
-    return fetch(`http://localhost:3000/user-courses?email=${email}`).then(res => res.json());
+export const userCoursePromiseApi = (email, accessToken) => {
+    return fetch(`https://assignment-11-server-tau-eight.vercel.app/user-courses?email=${email}`, {
+        credentials: 'include',
+        headers: {
+            authorization: `Bearer ${accessToken}`
+        }
+    }).then(res => res.json());
 }

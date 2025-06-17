@@ -32,7 +32,7 @@ const AddCourse = () => {
 
     // console.log(courseInfo);
 
-    axios.post('http://localhost:3000/courses', courseInfo)
+    axios.post('https://assignment-11-server-tau-eight.vercel.app/courses', courseInfo)
     .then(res => {
         console.log(res.data);
         if(res?.data?.insertedId){
