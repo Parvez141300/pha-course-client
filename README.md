@@ -26,7 +26,6 @@ NPM Packages:
 10. sweet alert2
 11. slick carousel
 12. react helmet async
-13. date fns
 
 dependencies:
 1. "@tailwindcss/vite": "^4.1.10",
