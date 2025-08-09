@@ -13,6 +13,7 @@ import EditCourse from "../pages/EditCourse/EditCourse";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import MyEnrolledCourses from "../pages/MyEnrolledCourses/MyEnrolledCourses";
 import UserProfile from "../pages/UserProfile/UserProfile";
+import ContactUs from "../pages/ContactUs/ContactUs";
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path: '/contact-us',
+        element: <ContactUs></ContactUs>
+      }
     ],
   },
 ]);

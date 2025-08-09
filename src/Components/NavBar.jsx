@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 
 import logo from "../assets/logo/pha course logo.png";
 import { AuthContext } from "../context/AuthContext";
+import ThemeToggle from "./ThemeToggle";
 
 const NavBar = () => {
   const { user, userSignOut, loading } = useContext(AuthContext);
@@ -41,6 +42,16 @@ const NavBar = () => {
           }
         >
           All Courses
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/contact-us"}
+          className={({ isActive }) =>
+            `dark:text-black nav-link ${isActive ? "active" : ""}`
+          }
+        >
+          Contact Us
         </NavLink>
       </li>
       {user && (
@@ -113,14 +124,14 @@ const NavBar = () => {
             </ul>
           </div>
           <Link to={"/"} className="btn btn-ghost px-0 text-xl">
-            <img className="w-24" src={logo} alt="" />
+            <img className="w-24" src={logo} alt="homeLogo" />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end relative flex items-center gap-5">
-          <div className="flex items-center justify-center h-full"></div>
+          <ThemeToggle></ThemeToggle>
 
           {loading ? (
             <span className="loading loading-spinner loading-sm"></span>
@@ -145,7 +156,7 @@ const NavBar = () => {
               </div>
             </div>
           ) : (
-            <div className="space-x-3">
+            <div className="flex justify-center gap-3">
               <Link
                 to="/login"
                 className="btn btn-outline outline-[#023A62] hover:bg-[#023A62] btn-primary hover:text-white"

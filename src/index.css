@@ -1,8 +1,14 @@
 @import "tailwindcss";
-@plugin "daisyui" {
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@plugin "daisyui"; 
+/* {
   themes: light --default, dark --prefersdark;
   themes: light --default;
- }
+ } */
 
  .nav-link {
   position: relative;
