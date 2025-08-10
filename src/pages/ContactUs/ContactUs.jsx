@@ -14,12 +14,10 @@ const ContactUs = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  // ফর্ম ইনপুট হ্যান্ডলার
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  // ফর্ম সাবমিট হ্যান্ডলার
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, phone, message } = formData;
@@ -29,7 +27,6 @@ const ContactUs = () => {
       return;
     }
 
-    // সহজ ইমেইল ভ্যালিডেশন
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       toast.error("Please enter a valid email");
@@ -39,17 +36,13 @@ const ContactUs = () => {
     setLoading(true);
 
     try {
-      // এখানে তোমার API URL দিবে অথবা Firebase function call দিবে
-      // নিচের উদাহরণ axios POST request এর জন্য
-    //   await axios.post("/api/contact", formData);
-
+      // await axios.post("/api/contact", formData);
       Swal.fire({
         icon: "success",
         title: "Message sent!",
         text: "Thank you for contacting us. We'll get back soon.",
       });
 
-      // ফর্ম ক্লিয়ার করা
       setFormData({
         name: "",
         email: "",
@@ -75,26 +68,28 @@ const ContactUs = () => {
         <meta name="description" content="Contact page of YourSiteName" />
       </Helmet>
 
-      <div className="min-h-screen bg-base-100 p-6 md:p-12 flex flex-col md:flex-row gap-10 max-w-7xl mx-auto">
+      <div className="min-h-screen p-6 md:p-12 flex flex-col md:flex-row gap-10 max-w-7xl mx-auto">
         {/* Left Side - Contact Info & Map */}
         <div className="md:w-1/2 space-y-6">
-          <h2 className="text-4xl font-bold text-primary">Get In Touch</h2>
-          <p className="text-neutral max-w-md">
-            Have questions? We’d love to hear from you. Fill out the form and we
+          <h2 className="text-4xl font-bold text-[#023A62] dark:text-[#09A3D0]">
+            Get In Touch
+          </h2>
+          <p className="max-w-md">
+            Have questions? We'd love to hear from you. Fill out the form and we
             will get back to you as soon as possible.
           </p>
 
-          <div className="space-y-4 text-neutral">
+          <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <MdLocationOn className="text-primary text-3xl" />
+              <MdLocationOn className="text-3xl" />
               <p>123 Main St, Dhaka, Bangladesh</p>
             </div>
             <div className="flex items-center gap-3">
-              <MdEmail className="text-primary text-3xl" />
+              <MdEmail className="text-3xl" />
               <p>info@yoursite.com</p>
             </div>
             <div className="flex items-center gap-3">
-              <MdPhone className="text-primary text-3xl" />
+              <MdPhone className="text-3xl" />
               <p>+880 1234 567890</p>
             </div>
           </div>
@@ -115,8 +110,8 @@ const ContactUs = () => {
         </div>
 
         {/* Right Side - Contact Form */}
-        <div className="md:w-1/2 bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg">
-          <h3 className="text-3xl font-semibold mb-6 text-primary">
+        <div className="md:w-1/2 bg-white p-8 rounded-lg shadow-lg">
+          <h3 className="text-3xl font-semibold mb-6 text-[#023A62] dark:text-[#09A3D0]">
             Contact Form
           </h3>
           <form onSubmit={handleSubmit} className="space-y-5">
@@ -163,7 +158,9 @@ const ContactUs = () => {
 
             <button
               type="submit"
-              className={`btn btn-primary w-full ${loading ? "loading" : ""}`}
+              className={`btn w-full ${
+                loading ? "loading" : ""
+              } bg-[#023A62] hover:bg-[#022a4a] dark:bg-[#023A62] dark:hover:bg-[#0789b3] text-white border-none`}
               disabled={loading}
             >
               {loading ? "Sending..." : "Send Message"}
