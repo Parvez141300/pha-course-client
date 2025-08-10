@@ -9,28 +9,30 @@ import PopularCourses from "./Shared/PopularCourses";
 import Newsletter from "./Shared/NewsLetter";
 
 const Home = () => {
-  const coursePromise = fetch("https://assignment-11-server-tau-eight.vercel.app/courses?latest=true").then(
-    (res) => res.json()
-  );
+  const coursePromise = fetch(
+    "https://assignment-11-server-tau-eight.vercel.app/courses?latest=true"
+  ).then((res) => res.json());
   return (
     <div>
       <Helmet>
         <title>PHA Course</title>
       </Helmet>
       <Banner></Banner>
-      <div className="w-11/12 mx-auto my-8">
-        <Suspense fallback={<LoadingState></LoadingState>}>
-          <Courses coursePromise={coursePromise}></Courses>
-        </Suspense>
-      </div>
-      <div className="w-11/12 mx-auto my-8">
-        <PopularCourses></PopularCourses>
-      </div>
-      <div className="w-11/12 mx-auto my-8">
-        <Stats></Stats>
-      </div>
-      <div className="w-11/12 mx-auto my-8">
-        <Faq></Faq>
+      <div className="space-y-8 my-8">
+        <div className="w-11/12 mx-auto">
+          <Suspense fallback={<LoadingState></LoadingState>}>
+            <Courses coursePromise={coursePromise}></Courses>
+          </Suspense>
+        </div>
+        <div className="w-11/12 mx-auto">
+          <PopularCourses></PopularCourses>
+        </div>
+        <div className="w-11/12 mx-auto">
+          <Stats></Stats>
+        </div>
+        <div className="w-11/12 mx-auto">
+          <Faq></Faq>
+        </div>
       </div>
       <div>
         <Newsletter></Newsletter>

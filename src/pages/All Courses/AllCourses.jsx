@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 
 const AllCourses = () => {
   const courses = useLoaderData();
+  
   return (
     <div className="space-y-5 w-11/12 mx-auto my-8">
       <Helmet>

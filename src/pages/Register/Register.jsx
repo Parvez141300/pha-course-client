@@ -2,11 +2,10 @@ import React, { useContext, useState } from "react";
 import {
   FaEye,
   FaGithub,
-  FaLink,
   FaRegEyeSlash,
   FaRegUser,
 } from "react-icons/fa";
-import { MdOutlineEmail } from "react-icons/md";
+import { MdDriveFolderUpload, MdOutlineEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { Link, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
@@ -176,12 +175,12 @@ const Register = () => {
   };
 
   return (
-    <div className="hero bg-[#09A3D1]/30 min-h-screen w-11/12 mx-auto py-10">
+    <div className="hero min-h-screen w-11/12 mx-auto py-10">
       <Helmet>
         <title>PHA Course | Register</title>
       </Helmet>
-      <div className="flex flex-col lg:flex-row-reverse">
-        <div className="bg-base-100 w-full lg:max-w-sm rounded-tl-2xl rounded-br-2xl">
+      <div className="flex flex-col lg:flex-row-reverse space-y-12">
+        <div className="bg-base-100 w-full lg:max-w-sm rounded-tl-2xl rounded-br-2xl border-2 border-[#08A2D0]">
           <div className="p-5">
             <img className="w-20 mx-auto" src={logo} alt="" />
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase text-center">
@@ -208,8 +207,7 @@ const Register = () => {
               {/* photo field */}
               <label className="label">Upload Photo</label>
               <div className="flex items-center relative">
-                <FaLink size={15} className="absolute left-1 z-10" />
-
+                <MdDriveFolderUpload  size={15} className="absolute left-1 z-10" />
                 <input
                   required
                   name="photo"

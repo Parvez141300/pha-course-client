@@ -92,12 +92,12 @@ const Login = () => {
   };
 
   return (
-    <div className="hero bg-[#09A3D1]/30 min-h-screen w-11/12 mx-auto">
+    <div className="hero min-h-screen w-11/12 mx-auto space-y-12">
       <Helmet>
         <title>PHA Course | Login</title>
       </Helmet>
       <div className="flex flex-col lg:flex-row-reverse">
-        <div className="bg-base-100 w-full lg:max-w-sm rounded-tl-2xl rounded-br-2xl">
+        <div className="bg-base-100 w-full lg:max-w-sm rounded-tl-2xl rounded-br-2xl border-2 border-[#08A2D0]">
           <div className="p-10">
             <img className="w-20 mx-auto" src={logo} alt="" />
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase text-center">

@@ -32,7 +32,7 @@ const Stats = () => {
           </div>
         </div>
       </section>
-      <section className="p-4 my-6 md:p-8">
+      <section className="p-4">
         <div className="container grid grid-cols-1 gap-6 m-4 mx-auto md:m-0 md:grid-cols-2 xl:grid-cols-3">
           <div className="flex overflow-hidden rounded-lg bg-white dark:bg-gray-700 shadow-md">
             <div className="flex items-center justify-center px-4 bg-[#023A62] dark:bg-[#3ABFF8] text-white">
