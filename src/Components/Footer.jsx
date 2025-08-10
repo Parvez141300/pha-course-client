@@ -15,7 +15,7 @@ import { FaLocationPin } from "react-icons/fa6";
 const Footer = () => {
   return (
     <div className="bg-[#023A62]">
-      <div className="w-11/12 mx-auto px-4 divide-y text-white">
+      <div className="w-11/12 mx-auto divide-y text-white">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-8">
           <div className="flex flex-col gap-4">
             <Link to={"/"}>

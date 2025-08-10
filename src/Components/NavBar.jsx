@@ -123,8 +123,8 @@ const NavBar = () => {
               {links}
             </ul>
           </div>
-          <Link to={"/"} className="btn btn-ghost px-0 text-xl">
-            <img className="w-24" src={logo} alt="homeLogo" />
+          <Link to={"/"} className="btn btn-ghost px-0 text-xl w-24 border-0 flex justify-items-start">
+            <img className="w-fit -ml-6" src={logo} alt="homeLogo" />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">

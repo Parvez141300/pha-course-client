@@ -26,17 +26,29 @@ const Register = () => {
 
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
+  const [photoPreview, setPhotoPreview] = useState(null);
+  const [photoFile, setPhotoFile] = useState(null);
 
   const navigate = useNavigate();
+
+  // photo change
+  const handlePhotoChange = (e) => {
+    console.log("photo", e.target.files[0]);
+    const file = e.target.files[0];
+    if (file) {
+      setPhotoFile(file);
+      setPhotoPreview(URL.createObjectURL(file));
+    }
+  };
 
   //   user register
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
     const newForm = new FormData(form);
-    const { name, photo, email, password, confirmPassword } =
-      Object.fromEntries(newForm.entries());
-    console.log(confirmPassword);
+    const { name, email, password, confirmPassword } = Object.fromEntries(
+      newForm.entries()
+    );
 
     // validate password
 
@@ -75,13 +87,21 @@ const Register = () => {
       return;
     }
 
+    // Convert file to URL (you might want to upload to storage here instead)
+    const photoURL = photoFile ? photoPreview : "";
+
+    if(!photoURL){
+      toast.error("Enter your photo");
+      return;
+    }
+
     // user register with email and password
     userSignUp(email, password)
       .then((result) => {
         const user = result.user;
         // console.log(user);
 
-        userUpdateProfile({ displayName: name, photoURL: photo })
+        userUpdateProfile({ displayName: name, photoURL })
           .then(() => {
             // Profile updated!
             // ...
@@ -93,6 +113,8 @@ const Register = () => {
         navigate("/");
         toast.success("User Successfully Registered");
         form.reset();
+        setPhotoPreview(null);
+        setPhotoFile(null)
       })
       .catch((error) => {
         // console.log(error.message);
@@ -157,8 +179,6 @@ const Register = () => {
       });
   };
 
-
-
   // login with github
   const handleGithubLogin = () => {
     userSignInWithGithub()
@@ -184,7 +204,7 @@ const Register = () => {
               theme: "light",
               transition: Bounce,
             });
-            navigate('/')
+            navigate("/");
           })
           .catch((error) => {
             toast.error(`${error.message}`, {
@@ -232,6 +252,7 @@ const Register = () => {
               Enter your information to register
             </p>
             <form onSubmit={handleRegister} className="fieldset">
+              {/* name field */}
               <label className="label">Name</label>
 
               <div className="flex items-center relative">
@@ -244,18 +265,30 @@ const Register = () => {
                   placeholder="Name"
                 />
               </div>
-              <label className="label">Photo URL</label>
+              {/* photo field */}
+              <label className="label">Upload Photo</label>
               <div className="flex items-center relative">
                 <FaLink size={15} className="absolute left-1 z-10" />
 
                 <input
                   required
                   name="photo"
-                  type="text"
+                  type="file"
+                  onChange={handlePhotoChange}
                   className="input px-5 w-full"
                   placeholder="Photo URL"
                 />
               </div>
+              {photoPreview && (
+                <div className="mt-2">
+                  <img
+                    src={photoPreview}
+                    alt="Preview"
+                    className="w-20 h-20 object-cover rounded-full border"
+                  />
+                </div>
+              )}
+              {/* email field */}
               <label className="label">Email</label>
               <div className="relative flex items-center">
                 <MdOutlineEmail size={20} className="absolute z-10 pl-1" />
@@ -267,6 +300,7 @@ const Register = () => {
                   placeholder="Email"
                 />
               </div>
+              {/* password field */}
               <label className="label">Password</label>
               <div className="relative flex items-center">
                 <RiLockPasswordLine size={20} className="absolute z-10 pl-1" />
@@ -291,6 +325,7 @@ const Register = () => {
                   placeholder="Password"
                 />
               </div>
+              {/* confirm password field */}
               <label className="label">Confirm Password</label>
               <div className="relative flex items-center">
                 <RiLockPasswordLine size={20} className="absolute z-10 pl-1" />
