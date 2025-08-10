@@ -68,32 +68,31 @@ const Footer = () => {
             <div className="uppercase font-bold text-white">Social media</div>
             <div className="flex justify-start space-x-3">
               <a
-                rel="noopener noreferrer"
-                href="#"
+                href="https://www.facebook.com/mdparvez.hossain.77985741"
+                target="_blank"
                 title="Facebook"
                 className="flex items-center p-1"
               >
                 <FaFacebook size={25}></FaFacebook>
               </a>
               <a
-                rel="noopener noreferrer"
-                href="#"
+                href="https://x.com/Parvez19188"
+                target="_blank"
                 title="Twitter"
                 className="flex items-center p-1"
               >
                 <FaTwitter size={25}></FaTwitter>
               </a>
               <a
-                rel="noopener noreferrer"
-                href="#"
+                href="https://www.instagram.com/mdparvez.hossain.77985741/"
                 title="Instagram"
                 className="flex items-center p-1"
               >
                 <FaInstagram size={25}></FaInstagram>
               </a>
               <a
-                rel="noopener noreferrer"
-                href="#"
+                href="https://www.youtube.com/@parvezhossain1592"
+                target="_blank"
                 title="Instagram"
                 className="flex items-center p-1"
               >
