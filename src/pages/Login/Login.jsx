@@ -53,45 +53,15 @@ const Login = () => {
             // Profile updated!
             // ...
             setUser(user);
-            toast.success("Successfully logged in", {
-              position: "top-right",
-              autoClose: 1000,
-              hideProgressBar: false,
-              closeOnClick: false,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Bounce,
-            });
+            toast.success("Successfully logged in");
             navigate(`${location.state ? location.state : "/"}`);
           })
           .catch((error) => {
-            toast.error(`${error.message}`, {
-              position: "top-right",
-              autoClose: 1000,
-              hideProgressBar: false,
-              closeOnClick: false,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Bounce,
-            });
+            toast.error(`${error.message}`);
           });
       })
       .catch((error) => {
-        toast.error(`${error.message}`, {
-          position: "top-right",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+        toast.error(`${error.message}`);
       });
   };
 
@@ -109,45 +79,15 @@ const Login = () => {
             // Profile updated!
             // ...
             setUser(user);
-            toast.success("Successfully logged in", {
-              position: "top-right",
-              autoClose: 1000,
-              hideProgressBar: false,
-              closeOnClick: false,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Bounce,
-            });
+            toast.success("Successfully logged in");
             navigate(`${location.state ? location.state : "/"}`);
           })
           .catch((error) => {
-            toast.error(`${error.message}`, {
-              position: "top-right",
-              autoClose: 1000,
-              hideProgressBar: false,
-              closeOnClick: false,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Bounce,
-            });
+            toast.error(`${error.message}`);
           });
       })
       .catch((error) => {
-        toast.error(`${error.message}`, {
-          position: "top-right",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+        toast.error(`${error.message}`);
       });
   };
 

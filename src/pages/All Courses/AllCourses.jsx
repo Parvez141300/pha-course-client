@@ -8,7 +8,7 @@ const AllCourses = () => {
   return (
     <div className="space-y-5 w-11/12 mx-auto my-8">
       <Helmet>
-        <title>PHA Course | All Courses</title>
+        <title>All Courses | PHA Course</title>
       </Helmet>
       <h2 className="text-3xl font-bold">Courses: ({courses.length})</h2>
 

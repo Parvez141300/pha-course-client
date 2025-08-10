@@ -12,7 +12,22 @@ createRoot(document.getElementById("root")).render(
     <HelmetProvider>
       <AuthProvider>
         <RouterProvider router={router}></RouterProvider>
-        <ToastContainer></ToastContainer>
+        <ToastContainer
+          position="bottom-left"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          toastStyle={{
+            backgroundColor: "#d1afad",
+            color: "white",
+            fontWeight: "bold",
+          }}
+        ></ToastContainer>
       </AuthProvider>
     </HelmetProvider>
   </StrictMode>

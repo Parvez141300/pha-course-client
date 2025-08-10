@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import Faq from "./Shared/Faq";
 import Stats from "./Shared/Stats";
 import PopularCourses from "./Shared/PopularCourses";
+import Newsletter from "./Shared/NewsLetter";
 
 const Home = () => {
   const coursePromise = fetch("https://assignment-11-server-tau-eight.vercel.app/courses?latest=true").then(
@@ -30,6 +31,9 @@ const Home = () => {
       </div>
       <div className="w-11/12 mx-auto my-8">
         <Faq></Faq>
+      </div>
+      <div>
+        <Newsletter></Newsletter>
       </div>
     </div>
   );

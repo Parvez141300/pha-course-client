@@ -90,7 +90,7 @@ const Register = () => {
     // Convert file to URL (you might want to upload to storage here instead)
     const photoURL = photoFile ? photoPreview : "";
 
-    if(!photoURL){
+    if (!photoURL) {
       toast.error("Enter your photo");
       return;
     }
@@ -114,7 +114,7 @@ const Register = () => {
         toast.success("User Successfully Registered");
         form.reset();
         setPhotoPreview(null);
-        setPhotoFile(null)
+        setPhotoFile(null);
       })
       .catch((error) => {
         // console.log(error.message);
@@ -137,45 +137,15 @@ const Register = () => {
             // Profile updated!
             // ...
 
-            toast.success("Successfully logged in", {
-              position: "top-right",
-              autoClose: 1000,
-              hideProgressBar: false,
-              closeOnClick: false,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Bounce,
-            });
+            toast.success("Successfully logged in");
             navigate("/");
           })
           .catch((error) => {
-            toast.error(`${error.message}`, {
-              position: "top-right",
-              autoClose: 1000,
-              hideProgressBar: false,
-              closeOnClick: false,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Bounce,
-            });
+            toast.error(`${error.message}`);
           });
       })
       .catch((error) => {
-        toast.error(`${error.message}`, {
-          position: "top-right",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+        toast.error(`${error.message}`);
       });
   };
 
@@ -193,45 +163,15 @@ const Register = () => {
             // Profile updated!
             // ...
             setUser(user);
-            toast.success("Successfully logged in", {
-              position: "top-right",
-              autoClose: 1000,
-              hideProgressBar: false,
-              closeOnClick: false,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Bounce,
-            });
+            toast.success("Successfully logged in");
             navigate("/");
           })
           .catch((error) => {
-            toast.error(`${error.message}`, {
-              position: "top-right",
-              autoClose: 1000,
-              hideProgressBar: false,
-              closeOnClick: false,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Bounce,
-            });
+            toast.error(`${error.message}`);
           });
       })
       .catch((error) => {
-        toast.error(`${error.message}`, {
-          position: "top-right",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+        toast.error(`${error.message}`);
       });
   };
 
