@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
         />
       </Helmet>
 
-      <div className="w-11/12 mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden p-5">
+      <div className="w-11/12 mx-auto rounded-xl shadow-lg overflow-hidden p-5">
         {/* Header */}
         <div className="bg-[#023A62] dark:bg-[#09A3D0] text-center py-5 mb-5
         rounded-t-xl">
@@ -34,7 +34,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-bold text-[#023A62] dark:text-[#09A3D0] flex items-center gap-2">
               <FaUserLock /> Introduction
             </h2>
-            <p className="text-gray-700 dark:text-gray-300">
+            <p>
               At PHA Course, we are committed to protecting your privacy. This
               Privacy Policy explains how we collect, use, disclose, and
               safeguard your information when you visit our website or use our
@@ -46,13 +46,13 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-bold text-[#023A62] dark:text-[#09A3D0] flex items-center gap-2">
               <FaDatabase /> Information We Collect
             </h2>
-            <p className="text-gray-700 dark:text-gray-300">
+            <p>
               We may collect personal information that you voluntarily provide
               to us when you register on the site, place an order, subscribe to
               our newsletter, or otherwise contact us. The types of personal
               information collected may include:
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
+            <ul className="list-disc pl-6 space-y-2">
               <li>
                 Your name and contact information (email address, phone number)
               </li>
@@ -67,14 +67,14 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-bold text-[#023A62] dark:text-[#09A3D0] flex items-center gap-2">
               <FaCookie /> How We Use Cookies
             </h2>
-            <p className="text-gray-700 dark:text-gray-300">
+            <p>
               We use cookies to enhance your experience on our site. Cookies are
               small files that ask permission to be placed on your computer's
               hard drive. Once you agree, the file is added and the cookie helps
               analyze web traffic or lets you know when you visit a particular
               site.
             </p>
-            <p className="text-gray-700 dark:text-gray-300">
+            <p>
               We use traffic log cookies to identify which pages are being used.
               This helps us analyze data about web page traffic and improve our
               website to tailor it to customer needs. We only use this
@@ -86,10 +86,10 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-bold text-[#023A62] dark:text-[#09A3D0]">
               How We Use Your Information
             </h2>
-            <p className="text-gray-700 dark:text-gray-300">
+            <p>
               We use the information we collect in various ways, including to:
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
+            <ul className="list-disc pl-6 space-y-2">
               <li>Provide, operate, and maintain our website</li>
               <li>Improve, personalize, and expand our website</li>
               <li>Understand and analyze how you use our website</li>
@@ -106,13 +106,13 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-bold text-[#023A62] dark:text-[#09A3D0]">
               Data Security
             </h2>
-            <p className="text-gray-700 dark:text-gray-300">
+            <p>
               We implement appropriate technical and organizational measures to
               maintain the safety of your personal information. All
               sensitive/credit information you supply is encrypted via Secure
               Socket Layer (SSL) technology.
             </p>
-            <p className="text-gray-700 dark:text-gray-300">
+            <p>
               We follow generally accepted industry standards to protect the
               personal information submitted to us, both during transmission and
               once we receive it. However, no method of transmission over the
@@ -124,13 +124,13 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-bold text-[#023A62] dark:text-[#09A3D0]">
               Changes to This Policy
             </h2>
-            <p className="text-gray-700 dark:text-gray-300">
+            <p>
               We may update our Privacy Policy from time to time. We will notify
               you of any changes by posting the new Privacy Policy on this page
               and updating the "Last Updated" date at the top of this Privacy
               Policy.
             </p>
-            <p className="text-gray-700 dark:text-gray-300">
+            <p>
               You are advised to review this Privacy Policy periodically for any
               changes. Changes to this Privacy Policy are effective when they
               are posted on this page.
@@ -141,14 +141,14 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-bold text-[#023A62] dark:text-[#09A3D0]">
               Contact Us
             </h2>
-            <p className="text-gray-700 dark:text-gray-300">
+            <p>
               If you have any questions about this Privacy Policy, please
               contact us at:
             </p>
-            <p className="text-gray-700 dark:text-gray-300">
-              Email: privacy@phacourse.com
+            <p>
+              Email: parvez.alif.dev@gmail.com
               <br />
-              Address: 123 Privacy Lane, Dhaka, Bangladesh
+              Address: Gazipur, Dhaka, Bangladesh
             </p>
           </section>
         </div>

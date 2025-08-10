@@ -82,15 +82,15 @@ const ContactUs = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <MdLocationOn className="text-3xl" />
-              <p>123 Main St, Dhaka, Bangladesh</p>
+              <p>Gazipur, Dhaka, Bangladesh</p>
             </div>
             <div className="flex items-center gap-3">
               <MdEmail className="text-3xl" />
-              <p>info@yoursite.com</p>
+              <p>parvez.alif.dev@gmail.com</p>
             </div>
             <div className="flex items-center gap-3">
               <MdPhone className="text-3xl" />
-              <p>+880 1234 567890</p>
+              <p>+880 1872243808</p>
             </div>
           </div>
 

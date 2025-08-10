@@ -15,6 +15,7 @@ import MyEnrolledCourses from "../pages/MyEnrolledCourses/MyEnrolledCourses";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
+import TermsOfService from "../pages/TermsOfServices/TermsOfServices";
 
 export const router = createBrowserRouter([
   {
@@ -89,6 +90,10 @@ export const router = createBrowserRouter([
       {
         path: '/privacy-policy',
         element: <PrivacyPolicy></PrivacyPolicy>
+      },
+      {
+        path: '/terms-of-services',
+        element: <TermsOfService></TermsOfService>
       }
     ],
   },

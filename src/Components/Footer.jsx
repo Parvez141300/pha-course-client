@@ -41,13 +41,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to={"/courses"} rel="noopener noreferrer" href="#">
-                  Courses
+                <Link to={"/all-courses"} rel="noopener noreferrer" href="#">
+                  All Courses
                 </Link>
               </li>
               <li>
-                <Link to={"/login"} rel="noopener noreferrer" href="#">
-                  Login
+                <Link to={"/contact-us"} rel="noopener noreferrer" href="#">
+                  Contact Us
                 </Link>
               </li>
             </ul>
@@ -62,9 +62,7 @@ const Footer = () => {
                 <Link to={"/privacy-policy"}>Privacy & Policy</Link>
               </li>
               <li>
-                <a rel="noopener noreferrer" href="#">
-                  Terms of Service
-                </a>
+                <Link to={"/terms-of-services"}>Terms of Service</Link>
               </li>
             </ul>
             <div className="uppercase font-bold text-white">Social media</div>
