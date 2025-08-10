@@ -20,7 +20,7 @@ const UserProfile = () => {
   );
 
   return (
-    <div className="bg-[#CEEDF6]">
+    <div>
       <div className="w-11/12 mx-auto min-h-screen flex justify-center items-center">
         <div className="flex flex-col justify-center mx-auto w-1/2 p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800">
           <img

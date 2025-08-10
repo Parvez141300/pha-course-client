@@ -26,7 +26,7 @@ const PopularCourses = () => {
         Popular Courses: ({popularCourse?.length})
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {popularCourse.map((p) => (
+        {popularCourse?.map((p) => (
           <div
             key={p?._id}
             className="flex flex-col items-center rounded-lg shadow-sm md:flex-row  bg-[#023A62] hover:bg-[#023A62]/80 transition duration-500"
