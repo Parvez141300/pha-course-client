@@ -36,17 +36,17 @@ const Footer = () => {
             </h3>
             <ul className="space-y-1">
               <li>
-                <Link to={'/'} rel="noopener noreferrer" href="#">
+                <Link to={"/"} rel="noopener noreferrer" href="#">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to={'/courses'} rel="noopener noreferrer" href="#">
+                <Link to={"/courses"} rel="noopener noreferrer" href="#">
                   Courses
                 </Link>
               </li>
               <li>
-                <Link to={'/login'} rel="noopener noreferrer" href="#">
+                <Link to={"/login"} rel="noopener noreferrer" href="#">
                   Login
                 </Link>
               </li>
@@ -59,9 +59,7 @@ const Footer = () => {
             </h3>
             <ul className="space-y-1">
               <li>
-                <a rel="noopener noreferrer" href="#">
-                  Privacy
-                </a>
+                <Link to={"/privacy-policy"}>Privacy & Policy</Link>
               </li>
               <li>
                 <a rel="noopener noreferrer" href="#">

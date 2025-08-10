@@ -14,6 +14,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import MyEnrolledCourses from "../pages/MyEnrolledCourses/MyEnrolledCourses";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 
 export const router = createBrowserRouter([
   {
@@ -84,6 +85,10 @@ export const router = createBrowserRouter([
       {
         path: '/contact-us',
         element: <ContactUs></ContactUs>
+      },
+      {
+        path: '/privacy-policy',
+        element: <PrivacyPolicy></PrivacyPolicy>
       }
     ],
   },
